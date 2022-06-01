@@ -10,11 +10,11 @@ import androidx.fragment.app.FragmentActivity
 
 class SoundMagic(private val context: Context) {
 
-    fun FragmentActivity.checkPermissions(listener: (Boolean) -> Unit) {
+    fun heckPermissions(cnx: FragmentActivity, listener: (Boolean) -> Unit) {
         val list = mutableListOf<String>()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             list.add(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-            permissions(list) { isGranted, _, deniedList ->
+            cnx.permissions(list) { isGranted, _, deniedList ->
                 if (isGranted && deniedList.isEmpty()) {
                     listener.invoke(true)
                 }else{
